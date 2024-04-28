@@ -23,13 +23,11 @@ class regiao_administrativa(Enum):
     AGUAS_CLARAS = {numero: 20, nome: "Águas Claras"},   
     RIACHO_FUNDO_II = {numero: 21, nome: "Riacho Fundo II"},
     SUDOESTE_OCTOGONAL = {numero: 22, nome: "Sudoeste/Octogonal"},
-
     VARJAO = {numero: 23, nome: "Varjão"},
     PARK_WAY = {numero: 24, nome: "Park Way"},
     SCIA = {numero: 25, nome: "SCIA"},
     SOBRADINHO_II = {numero: 26, nome: "Sobradinho II"},
     JARDIM_BOTANICO = {numero: 27, nome: "Jardim Botânico"},
-
     ITAPOA = {numero: 28, nome: "Itapoã"},
     SIA = {numero: 29, nome: "SIA"},
     VINCENTE_PIRES = {numero: 30, nome: "Vincente Pires"},

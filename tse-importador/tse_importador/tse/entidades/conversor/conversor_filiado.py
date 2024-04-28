@@ -1,7 +1,8 @@
 from entidades import {Filiado}
-from 
 
 class conversor_filiacao:
     
-    def converter_filiacao_tse_filiacao_cadastro: 
+    def converter_filiacao_tse_filiacao_cadastro(self, tse_filiado):
+        
+        pass
     
