@@ -1,5 +1,5 @@
-import situacao_filiacao
 import datetime
+from tse_importador.tse.entidades.situacao_filiacao import situacao_filiacao
 
 class Filiado:
     tituloEleitor: str

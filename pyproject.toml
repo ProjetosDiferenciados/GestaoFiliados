@@ -7,9 +7,21 @@ python = "^3.9"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.1.1"
+paprika = "*"
+mockito = "*"
+
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests/",
+    "tests/tse/conversor/test_convesor_filiado.py"
+]
+
 
 [tool.poetry]
 authors = ["Leandro"]
 description = "Nada"
 name = "tse_importador"
 version = "1.0"
+
+

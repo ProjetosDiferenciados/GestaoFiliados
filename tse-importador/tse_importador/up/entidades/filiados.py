@@ -1,8 +1,7 @@
 from datetime import date 
-from regiao_administrativa import regiao_administrativa
+from tse_importador.up.entidades.regiao_administrativa import regiao_administrativa
 from paprika import *
 
-@data
 class filiado_up:
 
     nome_completo: str
