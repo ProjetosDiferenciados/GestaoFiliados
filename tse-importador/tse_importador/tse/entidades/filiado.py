@@ -12,8 +12,35 @@ class Filiado:
     partido : str 
     situacao : situacao_filiacao
     pendenciaComunicacao = False
-
-
+    def json_converter_filiado_up (self):
+        return """
+                {{
+                    \"nome_completo\": \"{}\",
+                    \"nome_social\": \"Desconhecido\",
+                    \"data_nascimento\": null,
+                    \"genero\": \"{}\",
+                    \"sexualidade\": \"Desconhecido\" ,
+                    \"raca\": \"Desconhecido\",
+                    \"pcd\": \"Desconhecido\",
+                    \"local_residencia\": \"{}\",
+                    \"local_exercicio\": \"Desconhecido\",
+                    \"tituloEleitor\": \"{}\",
+                    \"dataFiliacao\" : \"{}\" ,
+                    \"uf\" : \"{}\",
+                    \"zona\" : {},
+                    \"situacao\" : \"{}\",
+                    \"pendenciaComunicacao\" : \"{}\"
+                }}
+                """.format(
+                    self.nome,
+                    self.genero,
+                    self.municipio,
+                    self.tituloEleitor,
+                    self.dataFiliacao,
+                    self.uf,
+                    self.zona,
+                    self.situacao._name_,
+                    {True: "true", False: "false"} [self.pendenciaComunicacao])
     pass
 
 
