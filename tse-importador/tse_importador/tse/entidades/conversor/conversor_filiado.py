@@ -7,8 +7,9 @@ import json
 
 class conversor_filiacao:
     def converter_filiacao_tse_filiacao_cadastro(self, tse_filiado:Filiado ) -> filiado_up: 
-        jsontexto = json.loads(tse_filiado.json_converter_filiado_up())
-        ent:filiado_up = filiado_up(**jsontexto)
+        self.valida_tse_filiado_valido(tse_filiado);
+        jsontexto = json.loads(tse_filiado.json_converter_filiado_up());
+        ent:filiado_up = filiado_up(**jsontexto);
         # Pequenas correcoes
         ent.situacao = get_situacao_filiacao_por_nome(ent.situacao)
         ent.pendenciaComunicacao = {True: True, False: False}[ent.pendenciaComunicacao == "true"]
@@ -17,3 +18,16 @@ class conversor_filiacao:
         return ent
         pass
     
+
+    def tse_filiado_valido(self, tse_filiado:Filiado) -> bool:
+        print("tse_filiado_valido")
+        print(tse_filiado != None)
+        print(type(tse_filiado) is Filiado)
+        return tse_filiado != None and isinstance(tse_filiado, Filiado)
+        pass
+
+    def valida_tse_filiado_valido(self, tse_filiado:Filiado) -> bool:
+        if not self.tse_filiado_valido(tse_filiado):
+            print("Filiado invalido")   
+            raise ValueError("Filiado invalido")
+        pass
