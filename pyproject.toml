@@ -1,3 +1,22 @@
+[project]
+name = "tse_importadorr"
+version = "0.0.1"
+authors = [
+  { name="Caju", email="cajjunb@gmail.com" },
+]
+description = "A small example package"
+readme = "README.md"
+requires-python = "=3.10.12"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/ProjetosDiferenciados/GestaoFiliados"
+Issues = "https://github.com/ProjetosDiferenciados/GestaoFiliados/issues"
+
 [tool.poetry]
 name = "tse-importador"
 version = "0.1.0"
