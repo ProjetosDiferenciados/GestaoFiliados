@@ -37,6 +37,33 @@ files = [
 ]
 
 [[package]]
+name = "mockito"
+version = "1.5.0"
+description = "Spying framework"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "mockito-1.5.0-py3-none-any.whl", hash = "sha256:b4df89187bcd0b1bac44b7d6bcbd03ad652bae800a3effbd2e077276ca69a862"},
+    {file = "mockito-1.5.0.tar.gz", hash = "sha256:036128da7daf2da89a0b637bd73321e992ff65ba8a39876ca233eec17eb77e8f"},
+]
+
+[[package]]
+name = "objectmapper"
+version = "0.0.7"
+description = "A small module for mapping between object types."
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "objectmapper-0.0.7-py3-none-any.whl", hash = "sha256:2e47cd9168206295e0a93c703bcd9801d98c19aea9af93eb8547170be64f751a"},
+    {file = "objectmapper-0.0.7.tar.gz", hash = "sha256:598dcf97a4370313bbce32fadbfbcfdbd447746f30ae170211eb5c0659401faf"},
+]
+
+[package.extras]
+docs = ["sphinx (==2.2.0)"]
+publish = ["mypy (==0.740)", "pylint (==2.4.3)", "pytest (==5.2.2)", "pytest-cov (==2.8.1)", "sphinx (==2.2.0)", "tox (==3.14.0)", "twine (==2.0.0)", "wheel (==0.33.6)"]
+tests = ["mypy (==0.740)", "pylint (==2.4.3)", "pytest (==5.2.2)", "pytest-cov (==2.8.1)", "sphinx (==2.2.0)", "tox (==3.14.0)"]
+
+[[package]]
 name = "packaging"
 version = "24.0"
 description = "Core utilities for Python packages"
@@ -48,14 +75,28 @@ files = [
 ]
 
 [[package]]
+name = "paprika"
+version = "1.3.0"
+description = "Paprika is a python library that reduces boilerplate. Heavily inspired by Project Lombok."
+optional = false
+python-versions = ">=3.8,<4.0"
+files = [
+    {file = "paprika-1.3.0-py3-none-any.whl", hash = "sha256:48fe3c186d3a02726a5e69146e6c06f59cccf1ad74895186f89bd4be24e19e69"},
+    {file = "paprika-1.3.0.tar.gz", hash = "sha256:7ba75216a7ee89a8fdb42d40df1cae703b923ccc239c2ecfc60d87e217040e68"},
+]
+
+[package.dependencies]
+tabulate = ">=0.8.9,<0.9.0"
+
+[[package]]
 name = "pluggy"
-version = "1.4.0"
+version = "1.5.0"
 description = "plugin and hook calling mechanisms for python"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "pluggy-1.4.0-py3-none-any.whl", hash = "sha256:7db9f7b503d67d1c5b95f59773ebb58a8c1c288129a88665838012cfb07b8981"},
-    {file = "pluggy-1.4.0.tar.gz", hash = "sha256:8c85c2876142a764e5b7548e7d9a0e0ddb46f5185161049a79b7e974454223be"},
+    {file = "pluggy-1.5.0-py3-none-any.whl", hash = "sha256:44e1ad92c8ca002de6377e165f3e0f1be63266ab4d554740532335b9d75ea669"},
+    {file = "pluggy-1.5.0.tar.gz", hash = "sha256:2cffa88e94fdc978c4c574f15f9e59b7f4201d439195c3715ca9e2486f1d0cf1"},
 ]
 
 [package.extras]
@@ -64,13 +105,13 @@ testing = ["pytest", "pytest-benchmark"]
 
 [[package]]
 name = "pytest"
-version = "8.1.1"
+version = "8.2.0"
 description = "pytest: simple powerful testing with Python"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "pytest-8.1.1-py3-none-any.whl", hash = "sha256:2a8386cfc11fa9d2c50ee7b2a57e7d898ef90470a7a34c4b949ff59662bb78b7"},
-    {file = "pytest-8.1.1.tar.gz", hash = "sha256:ac978141a75948948817d360297b7aae0fcb9d6ff6bc9ec6d514b85d5a65c044"},
+    {file = "pytest-8.2.0-py3-none-any.whl", hash = "sha256:1733f0620f6cda4095bbf0d9ff8022486e91892245bb9e7d5542c018f612f233"},
+    {file = "pytest-8.2.0.tar.gz", hash = "sha256:d507d4482197eac0ba2bae2e9babf0672eb333017bcedaa5fb1a3d42c1174b3f"},
 ]
 
 [package.dependencies]
@@ -78,11 +119,25 @@ colorama = {version = "*", markers = "sys_platform == \"win32\""}
 exceptiongroup = {version = ">=1.0.0rc8", markers = "python_version < \"3.11\""}
 iniconfig = "*"
 packaging = "*"
-pluggy = ">=1.4,<2.0"
+pluggy = ">=1.5,<2.0"
 tomli = {version = ">=1", markers = "python_version < \"3.11\""}
 
 [package.extras]
-testing = ["argcomplete", "attrs (>=19.2)", "hypothesis (>=3.56)", "mock", "pygments (>=2.7.2)", "requests", "setuptools", "xmlschema"]
+dev = ["argcomplete", "attrs (>=19.2)", "hypothesis (>=3.56)", "mock", "pygments (>=2.7.2)", "requests", "setuptools", "xmlschema"]
+
+[[package]]
+name = "tabulate"
+version = "0.8.10"
+description = "Pretty-print tabular data"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+files = [
+    {file = "tabulate-0.8.10-py3-none-any.whl", hash = "sha256:0ba055423dbaa164b9e456abe7920c5e8ed33fcc16f6d1b2f2d152c8e1e8b4fc"},
+    {file = "tabulate-0.8.10.tar.gz", hash = "sha256:6c57f3f3dd7ac2782770155f3adb2db0b1a269637e42f27599925e64b114f519"},
+]
+
+[package.extras]
+widechars = ["wcwidth"]
 
 [[package]]
 name = "tomli"
@@ -97,5 +152,5 @@ files = [
 
 [metadata]
 lock-version = "2.0"
-python-versions = "^3.9"
-content-hash = "5f94367509c59a1e3e408d1870482b2d360f3e0c80764ed3f620d452f31ca0b9"
+python-versions = "^3.10"
+content-hash = "d607848bd0f6a63b9622270534758da4a1bbf139a61873de45895feee4d8939a"
