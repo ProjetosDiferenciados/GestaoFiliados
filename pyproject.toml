@@ -28,6 +28,7 @@ readme = "README.md"
 python = "^3.10"
 pytest = "^8.1.1"
 paprika = "^1.3.0"
+SQLAlchemy = "*"
 mockito = "*"
 objectmapper = "^0.0.7"
 
@@ -35,7 +36,8 @@ objectmapper = "^0.0.7"
 [tool.pytest.ini_options]
 testpaths = [
     "tests/**.py",
-    "tests/tse/conversor/test_convesor_filiado.py"
+    "tests/tse/conversor/test_convesor_filiado.py",
+    "tests/persistencia/test_filiado_up_repositorio.py"
 ]
 
 

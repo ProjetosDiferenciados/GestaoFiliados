@@ -18,6 +18,8 @@ class filiado_up:
     local_exercicio: regiao_administrativa
 
     # Dados extras vindo do TSE
+    # todo verificar todos os campos 
+    # municipio falta
     tituloEleitor: str
     dataFiliacao : datetime 
     uf : str

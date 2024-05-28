@@ -9,37 +9,30 @@ mapper_registry = registry()
 filiado_mapeamento = Table('filiados_up',
             mapper_registry.metadata,
             Column('id', Integer, primary_key=True),
-            Column('tituloEleitor', String(50)),
             Column('nome', String(50)),
+            Column('nome_completo', String(300)),
+            Column('nome_social', String(300)),
+            Column('data_nascimento', DateTime),
             Column('genero', String(50)),
+            Column('sexualidade', String(50)),
+            Column('raca', String(50)),
+            Column('pcd', Boolean),
+            Column('municipio', String(50)),
+            Column('tituloEleitor', String(50)),
             Column('dataFiliacao', DateTime),
             Column('uf', String(50)),
-            Column('municipio', String(50)),
             Column('zona', Integer),
-            Column('partido', String(50)),
             Column('situacaoid', Integer),
-            Column('pendenciaComunicacao', Boolean)
-        )
+            Column('pendenciaComunicacao', Boolean),
+            Column('local_residencia', String(50)),
+            Column('local_exercicio', String(50))
+            )
 
 
 class ent_filiado_up(filiado_up):
+    # Campos extras da entidade
     id: int
     situacaoid: int
-
-    """ 
-    id: Mapped[int] = mapped_column(primary_key=True)
-    tituloEleitor: Mapped[str] = mapped_column(String(30))
-    nome: Mapped[str] = mapped_column(String(30))
-    genero: Mapped[str] = mapped_column(String(30))
-    dataFiliacao : Mapped[datetime] = mapped_column(DateTime) 
-    uf : Mapped[str] = mapped_column(String(2))
-    municipio : Mapped[str] = mapped_column(String(30))
-    zona : Mapped[int] = mapped_column(Integer)
-    partido : Mapped[str] = mapped_column(String(30))
-    situacao : Mapped[situacao_filiacao] = mapped_column(Enum(situacao_filiacao)) 
-    pendenciaComunicacao = Mapped[bool] = mapped_column(Boolean)
-    pass """
-
     pass
 
 
