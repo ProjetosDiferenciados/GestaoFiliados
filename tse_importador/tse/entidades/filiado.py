@@ -15,6 +15,7 @@ class Filiado:
     def json_converter_filiado_up (self):
         return """
                 {{
+                    \"id\": null,
                     \"nome_completo\": \"{}\",
                     \"nome_social\": \"Desconhecido\",
                     \"data_nascimento\": null,

@@ -22,7 +22,7 @@ filiado_mapeamento = Table('filiados_up',
             Column('dataFiliacao', DateTime),
             Column('uf', String(50)),
             Column('zona', Integer),
-            Column('situacaoid', Integer),
+            Column('situacao', String(30)),
             Column('pendenciaComunicacao', Boolean),
             Column('local_residencia', String(50)),
             Column('local_exercicio', String(50))
@@ -32,8 +32,10 @@ filiado_mapeamento = Table('filiados_up',
 class ent_filiado_up(filiado_up):
     # Campos extras da entidade
     id: int
-    situacaoid: int
     pass
+    def __init__(self):
+        pass
+
 
 
 mapper_registry.map_imperatively(ent_filiado_up,filiado_mapeamento)

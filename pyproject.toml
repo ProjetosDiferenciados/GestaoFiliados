@@ -39,6 +39,9 @@ testpaths = [
     "tests/tse/conversor/test_convesor_filiado.py",
     "tests/persistencia/test_filiado_up_repositorio.py"
 ]
+pythonpath = [
+  "."
+]
 
 
 [build-system]

@@ -20,14 +20,10 @@ class conversor_filiacao:
     
 
     def tse_filiado_valido(self, tse_filiado:Filiado) -> bool:
-        print("tse_filiado_valido")
-        print(tse_filiado != None)
-        print(type(tse_filiado) is Filiado)
         return tse_filiado != None and isinstance(tse_filiado, Filiado)
         pass
 
     def valida_tse_filiado_valido(self, tse_filiado:Filiado) -> bool:
         if not self.tse_filiado_valido(tse_filiado):
-            print("Filiado invalido")   
             raise ValueError("Filiado invalido")
         pass

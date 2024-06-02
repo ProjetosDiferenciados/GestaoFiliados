@@ -11,7 +11,7 @@ def test_converter_filiacao_tse_filiacao_cadastro_sucesso():
     print("test_converter_filiacao_tse_filiacao_cadastro_sucesso")
     expectativa: filiado_up_expectativa = filiado_up_expectativa(1)
     result: filiado_up_expectativa = conversor_filiacao.converter_filiacao_tse_filiacao_cadastro(Filiado_expectativa())
-    assert result.__eq__(expectativa)
+    assert expectativa == result
     pass
 
 
