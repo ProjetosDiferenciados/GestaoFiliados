@@ -35,9 +35,7 @@ objectmapper = "^0.0.7"
 
 [tool.pytest.ini_options]
 testpaths = [
-    "tests/**.py",
-    "tests/tse/conversor/test_convesor_filiado.py",
-    "tests/persistencia/test_filiado_up_repositorio.py"
+    "**/test_*.py"
 ]
 pythonpath = [
   "."

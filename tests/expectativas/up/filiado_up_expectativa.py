@@ -6,8 +6,28 @@ from paprika import to_string
 
 @to_string
 class filiado_up_expectativa(filiado_up):
-    def __init__(self, id):
+    def __init__(self):
         self.id = None
+        self.nome_completo = "nome"
+        self.nome_social=  'Desconhecido'
+        self.data_nascimento= None
+        self.genero= 'genero'
+        self.tituloEleitor= "tituloEleitor"
+        self.sexualidade= "Desconhecido"
+        self.raca= 'Desconhecido'
+        self.pcd= 'Desconhecido'
+        self.dataFiliacao = datetime(1, 1, 1)
+        self.uf = "uf"
+        self.pcd = 'Desconhecido'
+        self.zona = 0
+        self.pendenciaComunicacao = False
+        self.situacao = situacao_filiacao.REGULAR
+        self.local_residencia= "municipio"
+        self.local_exercicio = 'Desconhecido'
+        pass
+    pass
+    def __init__(self, id):
+        self.id = id
         self.nome_completo = "nome"
         self.nome_social=  'Desconhecido'
         self.data_nascimento= None
