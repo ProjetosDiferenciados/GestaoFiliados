@@ -2,11 +2,11 @@ from datetime import date
 from tse_importador.up.entidades.regiao_administrativa import regiao_administrativa
 import datetime
 from tse_importador.tse.entidades.situacao_filiacao import situacao_filiacao
-from dataclasses import dataclass
+from paprika import *
 
-@dataclass()
+@data
 class filiado_up:
-
+    id: int
     nome_completo: str
     nome_social: str
     data_nascimento: date
@@ -18,6 +18,8 @@ class filiado_up:
     local_exercicio: regiao_administrativa
 
     # Dados extras vindo do TSE
+    # todo verificar todos os campos 
+    # municipio falta
     tituloEleitor: str
     dataFiliacao : datetime 
     uf : str

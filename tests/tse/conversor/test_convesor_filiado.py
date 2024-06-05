@@ -9,15 +9,15 @@ conversor_filiacao = conversor_filiacao()
 
 def test_converter_filiacao_tse_filiacao_cadastro_sucesso():
     print("test_converter_filiacao_tse_filiacao_cadastro_sucesso")
-    expectativa: filiado_up_expectativa = filiado_up_expectativa(1)
+    expectativa: filiado_up_expectativa = filiado_up_expectativa(None)
     result: filiado_up_expectativa = conversor_filiacao.converter_filiacao_tse_filiacao_cadastro(Filiado_expectativa())
-    assert result.__eq__(expectativa)
+    assert expectativa == result
     pass
 
 
 def test_converter_filiacao_tse_filiacao_cadastro_falha():
     print("test_converter_filiacao_tse_filiacao_cadastro_falha")
-    expectativa: filiado_up_expectativa = filiado_up_expectativa(1)
+    expectativa: filiado_up_expectativa = filiado_up_expectativa(None)
     with raises(ValueError):
         conversor_filiacao.converter_filiacao_tse_filiacao_cadastro(None);
     pass
