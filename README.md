@@ -27,6 +27,20 @@ poetry run pytest
 
 ```
 
+## Banco de Dados Provisório:
+
+Utilizacao de uma imagem docker padrão do sqlite3:
+
+-- forma de utilização:
+
+
+```bash
+
+sudo docker run --rm -it -v "$(pwd):/up" -w ./ keinos/sqlite3
+
+```
+
+
 
 A partir daí, você pode começar a utilizar as funcionalidades oferecidas pelo pacote.
 
