@@ -1,6 +1,9 @@
 from django.db import models
 from django.utils import timezone
+from tse_importador.up.entidades.filiados import filiado_up as filiado_up
+from paprika import to_string
 
+@to_string
 class Filiado(models.Model):
     tituloEleitor = models.CharField(max_length=50)
     nome = models.CharField(max_length=50)
@@ -19,9 +22,30 @@ class Filiado(models.Model):
     pcd = models.BooleanField(default=False)
     local_residencia = models.CharField(max_length=50, null=True, blank=True)
     local_exercicio = models.CharField(max_length=50, null=True, blank=True)
+    
+    def __init__(self):
+        pass
 
-    def __str__(self):
-        return self.nome_completo
+    def instanciar(self, filiado: filiado_up) :
+        self.tituloEleitor = filiado.tituloEleitor
+        self.nome = filiado.nome_completo
+        self.genero = filiado.genero
+        self.dataFiliacao = filiado.dataFiliacao
+        self.uf = filiado.uf
+        self.municipio = filiado.local_residencia
+        self.zona = filiado.zona
+        self.situacao = filiado.situacao
+        self.pendenciaComunicacao = filiado.pendenciaComunicacao
+        self.nome_completo = filiado.nome_completo
+        self.nome_social = filiado.nome_social
+        self.data_nascimento = filiado.data_nascimento
+        self.sexo = filiado.genero
+        self.raca = filiado.raca
+        self.sexualidade = filiado.sexualidade
+        self.pcd = filiado.pcd
+        self.local_residencia = filiado.local_residencia
+        self.local_exercicio = filiado.local_exercicio
+        return self
 
 class SituacaoFiliacao(models.TextChoices):
     REGULAR = 'REGULAR', 'Regular'

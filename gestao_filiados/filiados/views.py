@@ -28,7 +28,7 @@ class FiliadoCreateView(View):
         form = self.form_class(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('filiado-list')
+            return redirect('list_filiado')
         return render(request, self.template_name, {'form': form})
     
 # Criar no tse_importador e fazer uma classe?

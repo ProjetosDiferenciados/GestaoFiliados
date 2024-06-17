@@ -15,7 +15,7 @@ class filiado_up_repositorio:
         pass
     def salvar(self, filiado):
         session = self.useSession()
-        useConverter = self.useConverter(self)
+        useConverter = self.useConverter()
         with session() as sessionManaged:
             sQuery = select(ent_filiado_up).where(ent_filiado_up.tituloEleitor == filiado.tituloEleitor)
             entNova = useConverter.converter_filiacao_up_ent_filiacao_up(filiado)
