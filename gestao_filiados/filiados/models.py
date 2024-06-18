@@ -1,9 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from tse_importador.up.entidades.filiados import filiado_up as filiado_up
-from paprika import to_string
 
-@to_string
 class Filiado(models.Model):
     tituloEleitor = models.CharField(max_length=50)
     nome = models.CharField(max_length=50)
@@ -22,9 +20,10 @@ class Filiado(models.Model):
     pcd = models.BooleanField(default=False)
     local_residencia = models.CharField(max_length=50, null=True, blank=True)
     local_exercicio = models.CharField(max_length=50, null=True, blank=True)
-    
-    def __init__(self):
-        pass
+
+    def __str__(self):
+        return self.nome_completo
+
 
     def instanciar(self, filiado: filiado_up) :
         self.tituloEleitor = filiado.tituloEleitor
@@ -46,6 +45,25 @@ class Filiado(models.Model):
         self.local_residencia = filiado.local_residencia
         self.local_exercicio = filiado.local_exercicio
         return self
+    
+    def retornar_entidade_negocio(self) -> filiado_up:
+        return filiado_up(
+            tituloEleitor=self.tituloEleitor,
+            nome_completo=self.nome_completo,
+            nome_social=self.nome_social,
+            data_nascimento=self.data_nascimento,
+            genero=self.genero,
+            sexualidade=self.sexualidade,
+            raca=self.raca,
+            pcd=self.pcd,
+            local_residencia=self.local_residencia,
+            local_exercicio=self.local_exercicio,
+            dataFiliacao=self.dataFiliacao,
+            uf=self.uf,
+            zona=self.zona,
+            situacao=self.situacao,
+            pendenciaComunicacao=self.pendenciaComunicacao
+        )
 
 class SituacaoFiliacao(models.TextChoices):
     REGULAR = 'REGULAR', 'Regular'

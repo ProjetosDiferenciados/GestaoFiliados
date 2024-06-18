@@ -27,3 +27,7 @@ class filiado_up:
     situacao : situacao_filiacao
     pendenciaComunicacao: bool
 
+    def verificar_titulo_eleitor_igual(self, outro_filiado:any) -> bool:
+        if not isinstance(outro_filiado, filiado_up):
+            return False
+        return self.tituloEleitor == outro_filiado.tituloEleitor
