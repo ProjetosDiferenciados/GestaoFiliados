@@ -5,7 +5,7 @@ from datetime import datetime
 import json 
 
 
-class conversor_filiacao:
+class upload_filiado:
     def converter_filiacao_tse_filiacao_cadastro(self, tse_filiado:Filiado ) -> filiado_up: 
         self.valida_tse_filiado_valido(tse_filiado);
         jsontexto = json.loads(tse_filiado.json_converter_filiado_up());
@@ -17,7 +17,6 @@ class conversor_filiacao:
         # Fim das correcoes
         return ent
         pass
-    
 
     def tse_filiado_valido(self, tse_filiado:Filiado) -> bool:
         return tse_filiado != None and isinstance(tse_filiado, Filiado)

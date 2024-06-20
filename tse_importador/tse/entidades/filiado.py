@@ -40,7 +40,7 @@ class Filiado:
                     self.dataFiliacao,
                     self.uf,
                     self.zona,
-                    self.situacao._name_,
+                    self.situacao,
                     {True: "true", False: "false"} [self.pendenciaComunicacao])
     pass
 
