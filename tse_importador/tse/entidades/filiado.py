@@ -1,7 +1,7 @@
 import datetime
 from tse_importador.tse.entidades.situacao_filiacao import situacao_filiacao
 
-class Filiado:
+class Tse_Filiado:
     tituloEleitor: str
     nome: str
     genero: str
@@ -40,7 +40,7 @@ class Filiado:
                     self.dataFiliacao,
                     self.uf,
                     self.zona,
-                    self.situacao,
+                    self.situacao.name if self.situacao != None else None,
                     {True: "true", False: "false"} [self.pendenciaComunicacao])
     pass
 

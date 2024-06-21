@@ -1,8 +1,8 @@
 from tse_importador.tse.entidades.situacao_filiacao import situacao_filiacao
-from tse_importador.tse.entidades.filiado import Filiado
+from tse_importador.tse.entidades.filiado import Tse_Filiado
 from datetime import datetime
 
-class Filiado_expectativa(Filiado):
+class Filiado_expectativa(Tse_Filiado):
     def __init__(self):
         self.tituloEleitor = "tituloEleitor"
         self.nome = "nome"
