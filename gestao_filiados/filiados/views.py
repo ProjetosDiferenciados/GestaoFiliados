@@ -41,8 +41,13 @@ def upload_file(request):
             file = request.FILES['file']
             list_filiado: list = upload_filiado().converter_excel_to_filiado_list(file)
             for filiado_elem in list_filiado:
-                ormFiliado = Filiado().instanciar(filiado_elem)
-                ormFiliado.save()
+                try :
+                    filiado_banco: Filiado = Filiado.objects.filter(tituloEleitor=filiado_elem.tituloEleitor)[0]
+                    print(f'Filiado com título eleitor {filiado_banco.tituloEleitor} já existe')
+                    continue
+                except ObjectDoesNotExist as e:
+                    ormFiliado = Filiado().instanciar(filiado_elem)
+                    ormFiliado.save()
             return redirect('list_filiado')
     else:
         form = UploadFileForm()

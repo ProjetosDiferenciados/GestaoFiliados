@@ -25,7 +25,6 @@ class upload_filiado:
             novo_filiado_tse.municipio = r['MUNICIPIO']
             novo_filiado_tse.pendenciaComunicacao = True if r['PENDENCIA DE COMUNICACAO'] == 'SIM' else False
             lista_filiados.append(novo_filiado_tse)
-            print("########## TSE FILIADO ############## :",r['SITUACAO'])
         return lista_filiados
         pass
 
