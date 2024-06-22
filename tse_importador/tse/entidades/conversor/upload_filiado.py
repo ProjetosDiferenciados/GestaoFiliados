@@ -1,5 +1,6 @@
 from pandas import pandas as pd
 from datetime import datetime
+from django.core.exceptions import ObjectDoesNotExist
 from tse_importador.tse.entidades.situacao_filiacao import get_situacao_filiacao_por_nome
 from tse_importador.tse.entidades.conversor.conversor_filiado import conversor_filiado
 from tse_importador.tse.entidades.filiado import Tse_Filiado
@@ -12,7 +13,6 @@ class upload_filiado:
         df = df.dropna()
         lista_filiados = []
         for i, r in df.iterrows():
-            print("######## INDICE ########")
             novo_filiado_tse: Tse_Filiado = Tse_Filiado()
             novo_filiado_tse.nome = r['NOME']
             novo_filiado_tse.genero = r['GENERO']
@@ -25,6 +25,7 @@ class upload_filiado:
             novo_filiado_tse.municipio = r['MUNICIPIO']
             novo_filiado_tse.pendenciaComunicacao = True if r['PENDENCIA DE COMUNICACAO'] == 'SIM' else False
             lista_filiados.append(novo_filiado_tse)
+            print("########## TSE FILIADO ############## :",r['SITUACAO'])
         return lista_filiados
         pass
 
@@ -35,3 +36,4 @@ class upload_filiado:
             filiado_list.append(self.conversor.converter_filiacao_tse_filiacao_cadastro(tse))
         return filiado_list
         pass
+    pass

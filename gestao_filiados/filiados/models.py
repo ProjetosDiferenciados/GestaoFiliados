@@ -1,7 +1,9 @@
 from django.db import models
 from django.utils import timezone
 from tse_importador.up.entidades.filiados import filiado_up as filiado_up
+from paprika import to_string
 
+@to_string
 class Filiado(models.Model):
     tituloEleitor = models.CharField(max_length=50)
     nome = models.CharField(max_length=50)
@@ -20,9 +22,6 @@ class Filiado(models.Model):
     pcd = models.BooleanField(default=False)
     local_residencia = models.CharField(max_length=50, null=True, blank=True)
     local_exercicio = models.CharField(max_length=50, null=True, blank=True)
-
-    def __str__(self):
-        return self.nome_completo
 
 
     def instanciar(self, filiado: filiado_up) :

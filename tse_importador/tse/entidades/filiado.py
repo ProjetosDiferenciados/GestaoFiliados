@@ -1,6 +1,8 @@
 import datetime
 from tse_importador.tse.entidades.situacao_filiacao import situacao_filiacao
+from paprika import to_string
 
+@to_string
 class Tse_Filiado:
     tituloEleitor: str
     nome: str
@@ -22,7 +24,7 @@ class Tse_Filiado:
                     \"genero\": \"{}\",
                     \"sexualidade\": \"Desconhecido\" ,
                     \"raca\": \"Desconhecido\",
-                    \"pcd\": \"Desconhecido\",
+                    \"pcd\": false,
                     \"local_residencia\": \"{}\",
                     \"local_exercicio\": \"Desconhecido\",
                     \"tituloEleitor\": \"{}\",

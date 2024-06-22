@@ -4,6 +4,8 @@ from .models import Filiado
 from django.views.generic import ListView, DetailView
 from django.views import View
 from django.http import HttpResponse
+from django.core.exceptions import ObjectDoesNotExist
+from tse_importador.tse.entidades.conversor.upload_filiado import upload_filiado
 import pandas as pd
 
 # Registro individual e visualização do BD
@@ -37,13 +39,14 @@ def upload_file(request):
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
             file = request.FILES['file']
-            df = pd.read_excel(file)
-            data = df.to_dict('records')
-            request.session['data'] = data
-            return redirect('display_file_content')
+            list_filiado: list = upload_filiado().converter_excel_to_filiado_list(file)
+            for filiado_elem in list_filiado:
+                ormFiliado = Filiado().instanciar(filiado_elem)
+                ormFiliado.save()
+            return redirect('list_filiado')
     else:
         form = UploadFileForm()
-    return render(request, 'upload.html', {'form': form})
+    return render(request, 'filiados/upload.html', {'form': form})
 
 def display_file_content(request):
     data = request.session.get('data')
