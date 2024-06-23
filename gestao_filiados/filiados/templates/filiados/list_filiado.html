@@ -4,11 +4,27 @@
 
 {% block content %}
   <h2>Lista de Filiados</h2>
-  <ul>
+  <table>
+    <thead>
+      <tr>
+        <th>Nome Completo</th>
+        <th>Titulo Eleitor</th>
+        <th>Municipio</th>
+        <th>Raça</th>
+        <th>Cidade</th>
+        <th>Situação</th>
+        <th>Inspecionar</th>
+      </tr>
     {% for filiado in object_list %}
-      <li>
-        <a href="{% url 'details_filiado' filiado.id %}">{{ filiado.nome_completo }}</a>
-      </li>
+      <tr>
+        <td class="m-1 p-1 d-inline-block text-truncate " style="width:100px">{{filiado.nome_completo}}</td>
+        <td class="m-1 p-1">{{filiado.tituloEleitor}}</td>
+        <td class="m-1 p-1">{{filiado.municipio}}</td>
+        <td class="m-1 p-1">{{filiado.raca}}</td>
+        <td class="m-1 p-1">{{filiado.local_exercicio}}</td>
+        <td class="m-1 p-1">{{filiado.situacao}}</td>
+        <td class="m-1 p-1"><a href="{% url 'details_filiado' filiado.id %}">Visualizar</a></td>
+      </tr>
     {% endfor %}
-  </ul>
+  </table>
 {% endblock %}

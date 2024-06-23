@@ -1,7 +1,7 @@
 from sqlalchemy import select
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from tse_importador.up.entidades.filiados import filiado_up
+from tse_importador.up.entidades.filiado_up import filiado_up
 from tse_importador.persistencia.entidades.converter_ent_filiado_up import converter_filiado_ent_up
 from tse_importador.persistencia.entidades.ent_filiado_up import ent_filiado_up
 import json

@@ -3,7 +3,7 @@ from datetime import datetime
 from django.core.exceptions import ObjectDoesNotExist
 from tse_importador.tse.entidades.situacao_filiacao import get_situacao_filiacao_por_nome
 from tse_importador.tse.entidades.conversor.conversor_filiado import conversor_filiado
-from tse_importador.tse.entidades.filiado import Tse_Filiado
+from tse_importador.tse.entidades.tse_filiado import Tse_Filiado
 
 
 class upload_filiado:

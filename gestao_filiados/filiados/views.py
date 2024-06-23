@@ -42,7 +42,7 @@ def upload_file(request):
             list_filiado: list = upload_filiado().converter_excel_to_filiado_list(file)
             for filiado_elem in list_filiado:
                 try :
-                    filiado_banco: Filiado = Filiado.objects.filter(tituloEleitor=filiado_elem.tituloEleitor)[0]
+                    filiado_banco: Filiado = Filiado.objects.filter(tituloEleitor=filiado_elem.tituloEleitor).get()
                     print(f'Filiado com título eleitor {filiado_banco.tituloEleitor} já existe')
                     continue
                 except ObjectDoesNotExist as e:

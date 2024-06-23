@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-from tse_importador.up.entidades.filiados import filiado_up as filiado_up
+from tse_importador.up.entidades.filiado_up import filiado_up as filiado_up
 from paprika import to_string
 
 @to_string

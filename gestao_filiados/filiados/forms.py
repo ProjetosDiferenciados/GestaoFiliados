@@ -1,6 +1,6 @@
 from django import forms
 from django.core.exceptions import ObjectDoesNotExist
-from tse_importador.up.entidades.filiados import filiado_up
+from tse_importador.up.entidades.filiado_up import filiado_up
 from tse_importador.up.entidades.regiao_administrativa import regiao_administrativa
 from tse_importador.tse.entidades.situacao_filiacao import situacao_filiacao, get_situacao_filiacao_por_nome
 from .models import Filiado
@@ -48,7 +48,7 @@ class FiliadoForm(forms.Form):
             pendenciaComunicacao=self.cleaned_data.get('pendenciaComunicacao', False)
         )
         try :
-            filiado_banco: Filiado = Filiado.objects.filter(tituloEleitor=filiado_novo.tituloEleitor)[0]
+            filiado_banco: Filiado = Filiado.objects.filter(tituloEleitor=filiado_novo.tituloEleitor).get()
             raise Exception(f'Filiado com título eleitor {filiado_novo.tituloEleitor} já existe')
         except ObjectDoesNotExist as e:
             filiado_ent = Filiado().instanciar(filiado_novo)

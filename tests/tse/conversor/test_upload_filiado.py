@@ -1,7 +1,7 @@
 from mockito import when, mock, unstub, spy2
 from tse_importador.tse.entidades.conversor.upload_filiado import upload_filiado
-from tse_importador.tse.entidades.filiado import Tse_Filiado
-from tse_importador.up.entidades.filiados import filiado_up
+from tse_importador.tse.entidades.tse_filiado import Tse_Filiado
+from tse_importador.up.entidades.filiado_up import filiado_up
 from pytest import raises
 
 upload_filiado = upload_filiado()
