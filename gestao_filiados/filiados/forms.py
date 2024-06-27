@@ -51,7 +51,7 @@ class FiliadoForm(forms.Form):
             filiado_banco: Filiado = Filiado.objects.filter(tituloEleitor=filiado_novo.tituloEleitor).get()
             raise Exception(f'Filiado com título eleitor {filiado_novo.tituloEleitor} já existe')
         except ObjectDoesNotExist as e:
-            filiado_ent = Filiado().instanciar(filiado_novo)
+            filiado_ent = Filiado().setarCampos(filiado_novo)
             filiado_ent.save()
             return filiado_novo
 

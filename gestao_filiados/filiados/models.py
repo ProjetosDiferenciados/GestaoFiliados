@@ -23,8 +23,7 @@ class Filiado(models.Model):
     local_residencia = models.CharField(max_length=50, null=True, blank=True)
     local_exercicio = models.CharField(max_length=50, null=True, blank=True)
 
-
-    def instanciar(self, filiado: filiado_up) :
+    def setarCampos(self, filiado: filiado_up) :
         self.tituloEleitor = filiado.tituloEleitor
         self.nome = filiado.nome_completo
         self.genero = filiado.genero

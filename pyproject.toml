@@ -19,9 +19,9 @@ Issues = "https://github.com/ProjetosDiferenciados/GestaoFiliados/issues"
 
 [tool.poetry]
 name = "tse-importador"
-version = "0.1.0"
+version = "0.1.2"
 description = ""
-authors = ["Caju <cajjunb@gmail.com>"]
+authors = ["Bryan","Caju <cajjunb@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
