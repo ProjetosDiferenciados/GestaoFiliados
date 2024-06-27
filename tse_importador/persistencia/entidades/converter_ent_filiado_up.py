@@ -1,5 +1,5 @@
 from tse_importador.persistencia.entidades.ent_filiado_up import ent_filiado_up
-from tse_importador.up.entidades.filiados import filiado_up
+from tse_importador.up.entidades.filiado_up import filiado_up
 from tse_importador.tse.entidades.situacao_filiacao import get_situacao_filiacao_por_nome
 from datetime import datetime
 import json

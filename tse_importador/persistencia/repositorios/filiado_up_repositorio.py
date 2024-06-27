@@ -1,7 +1,7 @@
 from sqlalchemy import select
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from tse_importador.up.entidades.filiados import filiado_up
+from tse_importador.up.entidades.filiado_up import filiado_up
 from tse_importador.persistencia.entidades.converter_ent_filiado_up import converter_filiado_ent_up
 from tse_importador.persistencia.entidades.ent_filiado_up import ent_filiado_up
 import json
@@ -15,7 +15,7 @@ class filiado_up_repositorio:
         pass
     def salvar(self, filiado):
         session = self.useSession()
-        useConverter = self.useConverter(self)
+        useConverter = self.useConverter()
         with session() as sessionManaged:
             sQuery = select(ent_filiado_up).where(ent_filiado_up.tituloEleitor == filiado.tituloEleitor)
             entNova = useConverter.converter_filiacao_up_ent_filiacao_up(filiado)

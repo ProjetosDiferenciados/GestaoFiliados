@@ -1,9 +1,10 @@
 from django import forms
-from datetime import date, datetime
-from tse_importador.up.entidades.filiados import filiado_up
+from django.core.exceptions import ObjectDoesNotExist
+from tse_importador.up.entidades.filiado_up import filiado_up
 from tse_importador.up.entidades.regiao_administrativa import regiao_administrativa
 from tse_importador.tse.entidades.situacao_filiacao import situacao_filiacao, get_situacao_filiacao_por_nome
-from tse_importador.persistencia.repositorios.filiado_up_repositorio import filiado_up_repositorio as fur
+from .models import Filiado
+
 
 class FiliadoForm(forms.Form):
     id = forms.IntegerField(required=False)
@@ -24,11 +25,11 @@ class FiliadoForm(forms.Form):
     pendenciaComunicacao = forms.BooleanField(required=False)
     
     #usar método da entidade no tse_importador(?)
-    def salvar(self):
+    def save(self):
         local_exercicio = regiao_administrativa[self.cleaned_data['local_exercicio']]
         situacao = get_situacao_filiacao_por_nome(self.cleaned_data['situacao'])
 
-        filiado = filiado_up(
+        filiado_novo = filiado_up(
             id=self.cleaned_data.get('id'),
             nome_completo=self.cleaned_data['nome_completo'],
             nome_social=self.cleaned_data.get('nome_social', ''),
@@ -46,7 +47,13 @@ class FiliadoForm(forms.Form):
             situacao=situacao,
             pendenciaComunicacao=self.cleaned_data.get('pendenciaComunicacao', False)
         )
-        return filiado
+        try :
+            filiado_banco: Filiado = Filiado.objects.filter(tituloEleitor=filiado_novo.tituloEleitor).get()
+            raise Exception(f'Filiado com título eleitor {filiado_novo.tituloEleitor} já existe')
+        except ObjectDoesNotExist as e:
+            filiado_ent = Filiado().setarCampos(filiado_novo)
+            filiado_ent.save()
+            return filiado_novo
 
 class UploadFileForm(forms.Form):
     file = forms.FileField()

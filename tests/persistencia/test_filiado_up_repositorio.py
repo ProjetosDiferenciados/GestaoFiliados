@@ -8,7 +8,7 @@ from tse_importador.persistencia.entidades.ent_filiado_up import ent_filiado_up
 from tse_importador.persistencia.repositorios.filiado_up_repositorio import filiado_up_repositorio
 from tests.expectativas.persistencia.ent_filiado_up_expectativa import ent_filiado_up_expectativa
 
-
+@DeprecationWarning
 def test_buscar_filiado_up_sucesso():
     expectativa = ent_filiado_up_expectativa(1)
 
@@ -32,6 +32,7 @@ def test_buscar_filiado_up_sucesso():
     pass
 
 
+@DeprecationWarning
 def test_buscar_tituloEleitor_filiado_up_sucesso():
     expectativa = ent_filiado_up_expectativa(1)
 
@@ -54,6 +55,7 @@ def test_buscar_tituloEleitor_filiado_up_sucesso():
     assert filiado_up_banco_expectativa(1) == result  
     pass
 
+@DeprecationWarning
 def test_salvar_filiado_up_sucesso():
     expectativa = ent_filiado_up_expectativa(1)
     argumento = filiado_up_expectativa(1)
@@ -77,6 +79,7 @@ def test_salvar_filiado_up_sucesso():
     verify(sessionSpy).add(ANY(ent_filiado_up))  
     pass
 
+@DeprecationWarning
 def test_atualizar_filiado_up_sucesso():
     expectativa = ent_filiado_up_expectativa(1)
     argumento = filiado_up_expectativa(1)

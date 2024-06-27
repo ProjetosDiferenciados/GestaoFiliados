@@ -4,6 +4,8 @@ from .models import Filiado
 from django.views.generic import ListView, DetailView
 from django.views import View
 from django.http import HttpResponse
+from django.core.exceptions import ObjectDoesNotExist
+from tse_importador.tse.entidades.conversor.upload_filiado import upload_filiado
 import pandas as pd
 
 # Registro individual e visualização do BD
@@ -28,7 +30,7 @@ class FiliadoCreateView(View):
         form = self.form_class(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('filiado-list')
+            return redirect('list_filiado')
         return render(request, self.template_name, {'form': form})
     
 # Criar no tse_importador e fazer uma classe?
@@ -37,13 +39,23 @@ def upload_file(request):
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
             file = request.FILES['file']
-            df = pd.read_excel(file)
-            data = df.to_dict('records')
-            request.session['data'] = data
-            return redirect('display_file_content')
+            list_filiado: list = upload_filiado().converter_excel_to_filiado_list(file)
+            list_filiado_ids_upload = [f.tituloEleitor for f in list_filiado]
+            for filiado_elem in list_filiado:
+                try :
+                    filiado_banco: Filiado = Filiado.objects.filter(tituloEleitor=filiado_elem.tituloEleitor).get()
+                    filiado_banco.setarCampos(filiado_elem).save()
+                    print(f'Filiado com título eleitor {filiado_banco.tituloEleitor} já existe, salvando')
+                    continue
+                except ObjectDoesNotExist as e:
+                    ormFiliado = Filiado().setarCampos(filiado_elem)
+                    ormFiliado.save()
+            # Remover filiados que não estão no arquivo        
+            Filiado.objects.exclude(tituloEleitor__in=list_filiado_ids_upload).delete()
+            return redirect('list_filiado')
     else:
         form = UploadFileForm()
-    return render(request, 'upload.html', {'form': form})
+    return render(request, 'filiados/upload.html', {'form': form})
 
 def display_file_content(request):
     data = request.session.get('data')

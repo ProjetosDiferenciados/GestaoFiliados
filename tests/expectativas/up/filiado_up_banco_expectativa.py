@@ -1,4 +1,4 @@
-from tse_importador.up.entidades.filiados import filiado_up
+from tse_importador.up.entidades.filiado_up import filiado_up
 from tse_importador.tse.entidades.situacao_filiacao import situacao_filiacao
 from tse_importador.up.entidades.regiao_administrativa import regiao_administrativa
 from datetime import datetime
