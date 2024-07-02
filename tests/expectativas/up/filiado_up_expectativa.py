@@ -1,4 +1,4 @@
-from tse_importador.up.entidades.filiados import filiado_up
+from tse_importador.up.entidades.filiado_up import filiado_up
 from tse_importador.tse.entidades.situacao_filiacao import situacao_filiacao
 from tse_importador.up.entidades.regiao_administrativa import regiao_administrativa
 from datetime import datetime
@@ -18,7 +18,7 @@ class filiado_up_expectativa(filiado_up):
         self.pcd= 'Desconhecido'
         self.dataFiliacao = datetime(1, 1, 1)
         self.uf = "uf"
-        self.pcd = 'Desconhecido'
+        self.pcd = False
         self.zona = 0
         self.pendenciaComunicacao = False
         self.situacao = situacao_filiacao.REGULAR
@@ -38,7 +38,7 @@ class filiado_up_expectativa(filiado_up):
         self.pcd= 'Desconhecido'
         self.dataFiliacao = datetime(1, 1, 1)
         self.uf = "uf"
-        self.pcd = 'Desconhecido'
+        self.pcd = False
         self.zona = 0
         self.pendenciaComunicacao = False
         self.situacao = situacao_filiacao.REGULAR

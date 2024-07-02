@@ -1,0 +1,14 @@
+<!-- filiados/templates/filiados/filiado_form.html -->
+
+{% extends "base_generic.html" %}
+
+{% block title %}Registrar Filiado{% endblock %}
+
+{% block content %}
+  <h2>Registrar Filiado</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+  </form>
+{% endblock %}

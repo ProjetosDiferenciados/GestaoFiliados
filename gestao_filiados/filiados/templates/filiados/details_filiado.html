@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block title %}Detalhes do Filiado{% endblock %}
+
+{% block content %}
+  <h2>{{ object.nome_completo }}</h2>
+  <p><strong>Titulo Eleitor:</strong> {{ object.tituloEleitor }}</p>
+  <p><strong>Genero:</strong> {{ object.genero }}</p>
+  <p><strong>Data Filiacao:</strong> {{ object.dataFiliacao }}</p>
+  <p><strong>UF:</strong> {{ object.uf }}</p>
+  <p><strong>Municipio:</strong> {{ object.municipio }}</p>
+  <p><strong>Zona:</strong> {{ object.zona }}</p>
+  <p><strong>Situacao:</strong> {{ object.situacao }}</p>
+  <p><strong>Pendencia Comunicacao:</strong> {{ object.pendenciaComunicacao }}</p>
+  <!-- Add other fields as necessary -->
+{% endblock %}

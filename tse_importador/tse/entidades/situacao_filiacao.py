@@ -2,6 +2,7 @@ from tse_importador.tse.entidades import *
 from enum import Enum
 
 def get_situacao_filiacao_por_nome(name):
+    name = name.upper() if name != None else None
     if name == situacao_filiacao.REGULAR._name_:
         return situacao_filiacao.REGULAR
     elif name == situacao_filiacao.NAO_REGULAR._name_:

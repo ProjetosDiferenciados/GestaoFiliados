@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h2>Informações Planilha</h2>
+  <table border="1">
+    <tr>
+      {% for key in data.0.keys %}
+        <th>{{ key }}</th>
+      {% endfor %}
+    </tr>
+    {% for row in data %}
+    <tr>
+      {% for key, value in row.items %}
+        <td>{{ value }}</td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </table>
+  <form method="post" action="{% url 'save_filiados' %}">
+    {% csrf_token %}
+    <button type="submit">Salvar</button>
+  </form>
+{% endblock %}

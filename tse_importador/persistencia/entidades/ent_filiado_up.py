@@ -1,5 +1,5 @@
 from tse_importador.tse.entidades.situacao_filiacao import situacao_filiacao
-from tse_importador.up.entidades.filiados import filiado_up
+from tse_importador.up.entidades.filiado_up import filiado_up
 from sqlalchemy import Table, Column, Integer, String, DateTime, Boolean
 from sqlalchemy.orm import registry
 from paprika import data

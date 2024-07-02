@@ -27,6 +27,22 @@ poetry run pytest
 
 ```
 
+## Migrar entidades
+
+```bash
+
+poetry run gestao_filiados/manage.py makemigrations
+poetry run gestao_filiados/manage.py migrate
+
+```
+
+## Iniciar o django
+
+```bash
+
+poetry run gestao_filiados/manage.py runserver
+
+```
 
 A partir daí, você pode começar a utilizar as funcionalidades oferecidas pelo pacote.
 
