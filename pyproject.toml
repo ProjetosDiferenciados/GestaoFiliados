@@ -2,6 +2,7 @@
 name = "tse_importadorr"
 version = "0.0.1"
 authors = [
+  { name="Bryan", email="?" },
   { name="Caju", email="cajjunb@gmail.com" },
 ]
 description = "A small example package"
@@ -19,7 +20,7 @@ Issues = "https://github.com/ProjetosDiferenciados/GestaoFiliados/issues"
 
 [tool.poetry]
 name = "tse-importador"
-version = "0.1.2"
+version = "0.1.1"
 description = ""
 authors = ["Bryan","Caju <cajjunb@gmail.com>"]
 readme = "README.md"
