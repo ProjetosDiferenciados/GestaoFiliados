@@ -26,11 +26,13 @@ authors = ["Bryan","Caju <cajjunb@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
+pyinstaller = "*"
 python = "^3.10"
 pytest = "^8.1.1"
 paprika = "^1.3.0"
 SQLAlchemy = "*"
 mockito = "*"
+gunicorn = "^22.0"
 objectmapper = "^0.0.7"
 django = "^5.0.6"
 pandas = "^2.2.2"
