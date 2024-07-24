@@ -2,3 +2,5 @@
 ***poetry.lock***
 ***pytest
 **/poetry.lock
+.venv/
+bin/

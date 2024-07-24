@@ -2,6 +2,7 @@
 name = "tse_importadorr"
 version = "0.0.1"
 authors = [
+  { name="Bryan", email="?" },
   { name="Caju", email="cajjunb@gmail.com" },
 ]
 description = "A small example package"
@@ -19,17 +20,19 @@ Issues = "https://github.com/ProjetosDiferenciados/GestaoFiliados/issues"
 
 [tool.poetry]
 name = "tse-importador"
-version = "0.1.2"
+version = "0.1.1"
 description = ""
 authors = ["Bryan","Caju <cajjunb@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
+pyinstaller = "*"
 python = "^3.10"
 pytest = "^8.1.1"
 paprika = "^1.3.0"
 SQLAlchemy = "*"
 mockito = "*"
+gunicorn = "^22.0"
 objectmapper = "^0.0.7"
 django = "^5.0.6"
 pandas = "^2.2.2"

@@ -1,3 +1,7 @@
+## [0.1.4]
+- Criação de scripts de execução de linux e windows.
+## [0.1.3]
+- Criação de scripts de instalação de linux e windows. 
 ## [0.1.2]
 - Upload de forma sincrona (retira nao atualizados)
 ## [0.1.1]
