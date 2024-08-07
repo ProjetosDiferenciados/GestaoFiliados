@@ -1,3 +1,5 @@
+## [0.1.5]
+- Configuração Correta do nginx para ser utilizada inclusa
 ## [0.1.4]
 - Criação de scripts de execução de linux e windows.
 ## [0.1.3]
