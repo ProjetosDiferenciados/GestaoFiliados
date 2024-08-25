@@ -26,9 +26,28 @@ SECRET_KEY = 'django-insecure-c8gk5@8++7jehj)h1-48y(6t(&hos2$mn#i1v170k#@i5*_8!9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['144.22.238.228']
+ALLOWED_HOSTS = ['144.22.238.228','localhost' ]
 
 
+# Configuração de Logs
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'django_debug.log'),  # Define o caminho do arquivo de log
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
 # Application definition
 
 INSTALLED_APPS = [

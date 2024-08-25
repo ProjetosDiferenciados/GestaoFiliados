@@ -6,7 +6,9 @@ from django.views import View
 from django.http import HttpResponse
 from django.core.exceptions import ObjectDoesNotExist
 from tse_importador.tse.entidades.conversor.upload_filiado import upload_filiado
-import pandas as pd
+import logging
+
+logger = logging.getLogger(__name__)
 
 # Registro individual e visualização do BD
 class FiliadoListView(ListView):
@@ -45,7 +47,7 @@ def upload_file(request):
                 try :
                     filiado_banco: Filiado = Filiado.objects.filter(tituloEleitor=filiado_elem.tituloEleitor).get()
                     filiado_banco.setarCampos(filiado_elem).save()
-                    print(f'Filiado com título eleitor {filiado_banco.tituloEleitor} já existe, salvando')
+                    logger.info(f'Filiado com título eleitor {filiado_banco.tituloEleitor} já existe, salvando')
                     continue
                 except ObjectDoesNotExist as e:
                     ormFiliado = Filiado().setarCampos(filiado_elem)

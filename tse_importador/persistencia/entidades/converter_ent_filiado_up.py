@@ -19,9 +19,7 @@ class converter_filiado_ent_up:
 
     def converter_filiacao_up_ent_filiacao_up(self, filiado:filiado_up ) -> ent_filiado_up:
         texto =  self.json_converter_filiado_up(filiado)
-        print("converter_filiacao_up_ent_filiacao_up")
         jsontexto = json.loads(texto);
-        print(texto)
         ent:ent_filiado_up = ent_filiado_up(**jsontexto);
         # Pequenas correcoes
         ent.situacao = get_situacao_filiacao_por_nome(filiado.situacao)
