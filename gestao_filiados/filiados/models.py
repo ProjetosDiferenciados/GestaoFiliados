@@ -10,7 +10,7 @@ class Filiado(models.Model):
     genero = models.CharField(max_length=50)
     dataFiliacao = models.DateTimeField()
     uf = models.CharField(max_length=50)
-    municipio = models.CharField(max_length=50)
+    municipio = models.CharField(max_length=50, null=True,default='Desconhecido')
     zona = models.IntegerField()
     situacao = models.CharField(max_length=30)
     pendenciaComunicacao = models.BooleanField(default=False)
@@ -23,25 +23,58 @@ class Filiado(models.Model):
     local_residencia = models.CharField(max_length=50, null=True, blank=True)
     local_exercicio = models.CharField(max_length=50, null=True, blank=True)
 
-    def setarCampos(self, filiado: filiado_up) :
-        self.tituloEleitor = filiado.tituloEleitor
-        self.nome = filiado.nome_completo
-        self.genero = filiado.genero
-        self.dataFiliacao = filiado.dataFiliacao
-        self.uf = filiado.uf
-        self.municipio = filiado.local_residencia
-        self.zona = filiado.zona
-        self.situacao = filiado.situacao
-        self.pendenciaComunicacao = filiado.pendenciaComunicacao
-        self.nome_completo = filiado.nome_completo
-        self.nome_social = filiado.nome_social
-        self.data_nascimento = filiado.data_nascimento
-        self.sexo = filiado.genero
-        self.raca = filiado.raca
-        self.sexualidade = filiado.sexualidade
-        self.pcd = filiado.pcd
-        self.local_residencia = filiado.local_residencia
-        self.local_exercicio = filiado.local_exercicio
+    # Dados extras vindo da planilha central da UP
+    secao = models.IntegerField(null=True, blank=True)
+    cpf = models.CharField(null= True, max_length=50)
+    cep = models.CharField(null= True, max_length=50)
+    rg = models.CharField(null= True, max_length=50)
+    genero = models.CharField(null= True, max_length=50)
+    endereco_residencial = models.CharField(null= True, max_length=50)
+    nome_mae = models.CharField(null= True, max_length=50)
+    ocupacao = models.CharField(null= True, max_length=50)
+    telefoneComDDD= models.CharField(null= True, max_length=50)
+    whatsAppComDDD= models.CharField(null= True, max_length=50)
+    email= models.CharField(null= True, max_length=50)
+    data_inscricao= models.DateTimeField(null=True, blank=True)
+    data_atualizacao= models.DateTimeField(null=True, blank=True)
+    municipio_onde_vota= models.CharField(null= True, max_length=50)
+    reponsavelFiliacao= models.CharField(null= True, max_length=50)
+
+    def setarCampos(self, filiado: filiado_up):
+        self.tituloEleitor = getattr(filiado, 'tituloEleitor', None)
+        self.nome = getattr(filiado, 'nome_completo', None)
+        self.genero = getattr(filiado, 'genero', None)
+        self.dataFiliacao = getattr(filiado, 'dataFiliacao', None)
+        self.uf = getattr(filiado, 'uf', None)
+        self.municipio = getattr(filiado, 'local_residencia', None)
+        self.zona = getattr(filiado, 'zona', None)
+        self.situacao = getattr(filiado, 'situacao', SituacaoFiliacao.NAO_REGULAR)
+        self.pendenciaComunicacao = getattr(filiado, 'pendenciaComunicacao', True)
+        self.nome_completo = getattr(filiado, 'nome_completo', self.nome)
+        self.nome_social = getattr(filiado, 'nome_social', self.nome)
+        self.data_nascimento = getattr(filiado, 'data_nascimento', None)
+        self.sexo = getattr(filiado, 'genero', None)
+        self.raca = getattr(filiado, 'raca', None)
+        self.sexualidade = getattr(filiado, 'sexualidade', None)
+        self.pcd = getattr(filiado, 'pcd', False)
+        self.local_residencia = getattr(filiado, 'local_residencia', None)
+        self.local_exercicio = getattr(filiado, 'local_exercicio', None)
+        # Dados extras vindo da planilha central da UP
+        self.secao = getattr(filiado, 'secao', None)
+        self.cpf = getattr(filiado, 'cpf', None)
+        self.cep = getattr(filiado, 'cep', None)
+        self.rg = getattr(filiado, 'rg', None)
+        self.endereco_residencial = getattr(filiado, 'endereco_residencial', None)
+        self.nome_mae = getattr(filiado, 'nome_mae', None)
+        self.ocupacao = getattr(filiado, 'ocupacao', None)
+        self.telefoneComDDD = getattr(filiado, 'telefoneComDDD', None)
+        self.whatsAppComDDD = getattr(filiado, 'whatsAppComDDD', None)
+        self.email = getattr(filiado, 'email', None)
+        self.data_inscricao = getattr(filiado, 'data_inscricao', None)
+        self.genero = getattr(filiado, 'genero', None)
+        self.data_atualizacao = getattr(filiado, 'data_atualizacao', None)
+        self.municipio_onde_vota = getattr(filiado, 'municipio_onde_vota', None)
+        self.reponsavelFiliacao = getattr(filiado, 'reponsavelFiliacao', None)
         return self
     
     def retornar_entidade_negocio(self) -> filiado_up:

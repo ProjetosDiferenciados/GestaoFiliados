@@ -1,14 +1,9 @@
 from pandas import pandas as pd
-from datetime import datetime
-from django.core.exceptions import ObjectDoesNotExist
-from tse_importador.tse.entidades.situacao_filiacao import get_situacao_filiacao_por_nome
-from tse_importador.tse.entidades.conversor.conversor_filiado import conversor_filiado
 from tse_importador.up.entidades.filiado_up import filiado_up
 
 
 
 class upload_filiado_up:
-    conversor :conversor_filiado = conversor_filiado()
     def converter_excel_to_filiado_up_list(self, file) -> list:
         df = pd.read_excel(file)
         lista_filiados = []
