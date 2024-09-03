@@ -21,11 +21,30 @@ class filiado_up:
     # todo verificar todos os campos 
     # municipio falta
     tituloEleitor: str
-    dataFiliacao : datetime 
     uf : str
-    zona : int 
+    zona : int
+    secao : int 
     situacao : situacao_filiacao
     pendenciaComunicacao: bool
+    cienciaContribuicao: bool
+
+    cpf: str
+    cep: str
+    rg: str
+    endereco_residencial: str
+    nome_mae: str
+    ocupacao: str
+    municipio: str
+    telefoneComDDD: str
+    whatsAppComDDD: str
+    email: str
+
+    data_inscricao: datetime
+    data_atualizacao: datetime
+    dataFiliacao : datetime 
+
+    municipio_onde_vota: str
+    reponsavelFiliacao: str
 
     def verificar_titulo_eleitor_igual(self, outro_filiado:any) -> bool:
         if not isinstance(outro_filiado, filiado_up):
