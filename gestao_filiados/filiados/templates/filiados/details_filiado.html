@@ -3,14 +3,64 @@
 {% block title %}Detalhes do Filiado{% endblock %}
 
 {% block content %}
-  <h2>{{ object.nome_completo }}</h2>
-  <p><strong>Titulo Eleitor:</strong> {{ object.tituloEleitor }}</p>
-  <p><strong>Genero:</strong> {{ object.genero }}</p>
-  <p><strong>Data Filiacao:</strong> {{ object.dataFiliacao }}</p>
-  <p><strong>UF:</strong> {{ object.uf }}</p>
-  <p><strong>Municipio:</strong> {{ object.municipio }}</p>
-  <p><strong>Zona:</strong> {{ object.zona }}</p>
-  <p><strong>Situacao:</strong> {{ object.situacao }}</p>
-  <p><strong>Pendencia Comunicacao:</strong> {{ object.pendenciaComunicacao }}</p>
-  <!-- Add other fields as necessary -->
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h2>Detalhes do Filiado: {{ object.nome_completo }}</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>Título Eleitor:</strong> {{ object.tituloEleitor }}</p>
+                    <p><strong>Gênero:</strong> {{ object.genero }}</p>
+                    <p><strong>Data de Filiação:</strong> {{ object.dataFiliacao|date:"d/m/Y H:i" }}</p>
+                    <p><strong>UF:</strong> {{ object.uf }}</p>
+                    <p><strong>Município:</strong> {{ object.municipio }}</p>
+                    <p><strong>Zona:</strong> {{ object.zona }}</p>
+                    <p><strong>Situação:</strong> {{ object.situacao }}</p>
+                    <p><strong>Pendência de Comunicação:</strong> {{ object.pendenciaComunicacao|yesno:"Sim,Não" }}</p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Nome Social:</strong> {{ object.nome_social }}</p>
+                    <p><strong>Data de Nascimento:</strong> {{ object.data_nascimento|date:"d/m/Y" }}</p>
+                    <p><strong>Sexualidade:</strong> {{ object.sexualidade }}</p>
+                    <p><strong>Raça:</strong> {{ object.raca }}</p>
+                    <p><strong>PCD:</strong> {{ object.pcd|yesno:"Sim,Não" }}</p>
+                    <p><strong>Local de Residência:</strong> {{ object.local_residencia }}</p>
+                    <p><strong>Local de Exercício:</strong> {{ object.local_exercicio }}</p>
+                </div>
+            </div>
+            <hr>
+            <h4>Dados Extras</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>Seção:</strong> {{ object.secao }}</p>
+                    <p><strong>CPF:</strong> {{ object.cpf }}</p>
+                    <p><strong>CEP:</strong> {{ object.cep }}</p>
+                    <p><strong>RG:</strong> {{ object.rg }}</p>
+                    <p><strong>Endereço Residencial:</strong> {{ object.endereco_residencial }}</p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Nome da Mãe:</strong> {{ object.nome_mae }}</p>
+                    <p><strong>Ocupação:</strong> {{ object.ocupacao }}</p>
+                    <p><strong>Telefone com DDD:</strong> {{ object.telefoneComDDD }}</p>
+                    <p><strong>WhatsApp com DDD:</strong> {{ object.whatsAppComDDD }}</p>
+                    <p><strong>Email:</strong> {{ object.email }}</p>
+                </div>
+            </div>
+            <hr>
+            <h4>Outras Informações</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>Data de Inscrição:</strong> {{ object.data_inscricao|date:"d/m/Y H:i" }}</p>
+                    <p><strong>Data de Atualização:</strong> {{ object.data_atualizacao|date:"d/m/Y H:i" }}</p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Município onde Vota:</strong> {{ object.municipio_onde_vota }}</p>
+                    <p><strong>Responsável pela Filiação:</strong> {{ object.reponsavelFiliacao }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

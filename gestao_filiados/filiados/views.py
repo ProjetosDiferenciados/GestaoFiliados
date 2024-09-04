@@ -8,6 +8,9 @@ from django.core.exceptions import ObjectDoesNotExist
 from tse_importador.tse.entidades.conversor.upload_filiado import upload_filiado
 from tse_importador.up.entidades.conversor.upload_filiado_up import upload_filiado_up
 import pandas as pd
+import logging
+
+logger = logging.getLogger(__name__)
 
 # Registro individual e visualização do BD
 class FiliadoListView(ListView):
@@ -19,7 +22,7 @@ class FiliadoDetailView(DetailView):
     template_name = 'filiados/details_filiado.html'
 
 
-class FiliadoDetailView(DetailView):
+class FiliadoUploadView(View):
     model = Filiado
     template_name = 'filiados/upload-filiado.html'
 
@@ -50,7 +53,7 @@ def upload_file(request):
                 try :
                     filiado_banco: Filiado = Filiado.objects.filter(tituloEleitor=filiado_elem.tituloEleitor).get()
                     filiado_banco.setarCampos(filiado_elem).save()
-                    print(f'Filiado com título eleitor {filiado_banco.tituloEleitor} já existe, salvando')
+                    logger.info(f'Filiado com título eleitor {filiado_banco.tituloEleitor} já existe, salvando')
                     continue
                 except ObjectDoesNotExist as e:
                     ormFiliado = Filiado().setarCampos(filiado_elem)
@@ -68,11 +71,10 @@ def upload_filiados_planilha_up(request):
             list_filiado: list = upload_filiado_up().converter_excel_to_filiado_up_list(file)
             list_filiado_ids_upload = [f.tituloEleitor for f in list_filiado]
             for filiado_elem in list_filiado:
-                print (filiado_elem)
                 try :
                     filiado_banco: Filiado = Filiado.objects.filter(tituloEleitor=filiado_elem.tituloEleitor).get()
                     filiado_banco.setarCampos(filiado_elem).save()
-                    print(f'Filiado com título eleitor {filiado_banco.tituloEleitor} já existe, salvando')
+                    logger.info(f'Filiado com título eleitor {filiado_banco.tituloEleitor} já existe, salvando')
                     continue
                 except ObjectDoesNotExist as e:
                     ormFiliado = Filiado().setarCampos(filiado_elem)
