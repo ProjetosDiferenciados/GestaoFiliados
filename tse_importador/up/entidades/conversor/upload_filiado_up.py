@@ -28,7 +28,6 @@ class upload_filiado_up:
             novo_filiado_up.whatsAppComDDD = str(r['WHATSAPP COM DDD'])
             novo_filiado_up.dataFiliacao = r['DATA DA FILIAÇÃO'].to_pydatetime()
             novo_filiado_up.reponsavelFiliacao = r['RESPONSÁVEL POR SUA FILIAÇÃO']
-            print(novo_filiado_up)
             lista_filiados.append(novo_filiado_up)
         return lista_filiados
         pass
