@@ -1,6 +1,7 @@
 from django import forms
 from django.core.exceptions import ObjectDoesNotExist
 from tse_importador.up.entidades.filiado_up import filiado_up
+from tse_importador.up.entidades.profissao_enum import profissao_enum
 from tse_importador.up.entidades.regiao_administrativa import regiao_administrativa
 from tse_importador.tse.entidades.situacao_filiacao import situacao_filiacao, get_situacao_filiacao_por_nome
 from .models import Filiado
@@ -22,6 +23,8 @@ class FiliadoForm(forms.Form):
     uf = forms.CharField(max_length=2)
     zona = forms.IntegerField()
     situacao = forms.ChoiceField(choices=[(tag.name, tag.name) for tag in situacao_filiacao])
+    profissao = forms.ChoiceField(choices=[(tag.name, tag.name) for tag in profissao_enum])
+    etnia = forms.CharField(max_length=100)
     pendenciaComunicacao = forms.BooleanField(required=False)
     
     #usar método da entidade no tse_importador(?)
@@ -45,6 +48,8 @@ class FiliadoForm(forms.Form):
             uf=self.cleaned_data['uf'],
             zona=self.cleaned_data['zona'],
             situacao=situacao,
+            profissao=self.cleaned_data.get('profissao_enum',profissao_enum.DESCONHECIDO),
+            etnia=self.cleaned_data['etnia'],
             pendenciaComunicacao=self.cleaned_data.get('pendenciaComunicacao', False)
         )
         try :
