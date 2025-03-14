@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from tse_importador.up.entidades.filiado_up import filiado_up as filiado_up
+from tse_importador.up.entidades.profissao_enum import profissao_enum
 from paprika import to_string
 
 @to_string
@@ -39,6 +40,8 @@ class Filiado(models.Model):
     data_atualizacao= models.DateTimeField(null=True, blank=True)
     municipio_onde_vota= models.CharField(null= True, max_length=50)
     reponsavelFiliacao= models.CharField(null= True, max_length=50)
+    profissao= models.IntegerField(null=True, blank=True)
+    etnia= models.CharField(null=True, max_length=100)
 
     def setarCampos(self, filiado: filiado_up):
         self.tituloEleitor = getattr(filiado, 'tituloEleitor', None)
@@ -74,6 +77,9 @@ class Filiado(models.Model):
         self.genero = getattr(filiado, 'genero', None)
         self.data_atualizacao = getattr(filiado, 'data_atualizacao', None)
         self.municipio_onde_vota = getattr(filiado, 'municipio_onde_vota', None)
+        self.reponsavelFiliacao = getattr(filiado, 'reponsavelFiliacao', None)
+        self.profissao = getattr(filiado, 'profissao.value', profissao_enum.DESCONHECIDO.value)
+        self.etnia = getattr(filiado, 'etnia', None)
         self.reponsavelFiliacao = getattr(filiado, 'reponsavelFiliacao', None)
         return self
     

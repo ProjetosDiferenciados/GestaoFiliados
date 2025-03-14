@@ -1,5 +1,7 @@
 from enum import Enum
 
+
+
 class profissao_enum(Enum):
     DESCONHECIDO = {"numero": -1, "nome": "Desconhecido"}
     DESENVOLVEDOR_WEB = {"numero": 1, "nome": "Desenvolvedor Web"}
@@ -52,3 +54,9 @@ class profissao_enum(Enum):
     CORRETOR_DE_IMÓVEIS = {"numero": 48, "nome": "Corretor de Imóveis"}
     ESCRITURÁRIO = {"numero": 49, "nome": "Escriturário"}
     PODÓLOGO = {"numero": 50, "nome": "Podólogo"}
+
+
+
+def get_profissao_enum_por_id(profissao: profissao_enum):
+    profissao_aux = profissao if (profissao != None and isinstance(profissao, profissao_enum) ) else profissao_enum.DESCONHECIDO
+    return profissao_aux
