@@ -1,6 +1,7 @@
 from tse_importador.up.entidades.filiado_up import filiado_up
 from tse_importador.tse.entidades.situacao_filiacao import situacao_filiacao
 from tse_importador.up.entidades.regiao_administrativa import regiao_administrativa
+from tse_importador.up.entidades.profissao_enum import *
 from datetime import datetime
 from paprika import *
 
@@ -23,6 +24,8 @@ class filiado_up_banco_expectativa(filiado_up):
         self.situacao = situacao_filiacao.REGULAR
         self.local_residencia= "municipio"
         self.local_exercicio = 'local_exercicio'
+        self.profissao = profissao_enum.DESCONHECIDO
+        self.etnia = "Desconhecido"
         pass
     pass
 

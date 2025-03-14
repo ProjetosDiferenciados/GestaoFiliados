@@ -1,6 +1,7 @@
 from datetime import date 
 from tse_importador.up.entidades.regiao_administrativa import regiao_administrativa
 import datetime
+from tse_importador.up.entidades.profissao_enum import *
 from tse_importador.tse.entidades.situacao_filiacao import situacao_filiacao
 from paprika import *
 
@@ -16,6 +17,8 @@ class filiado_up:
     pcd: bool
     local_residencia: str
     local_exercicio: regiao_administrativa
+    profissao: profissao_enum
+    etnia: str
 
     # Dados extras vindo do TSE
     # todo verificar todos os campos 

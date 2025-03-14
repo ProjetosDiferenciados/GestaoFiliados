@@ -1,6 +1,7 @@
 from tse_importador.up.entidades.filiado_up import filiado_up
 from tse_importador.tse.entidades.situacao_filiacao import situacao_filiacao
 from tse_importador.up.entidades.regiao_administrativa import regiao_administrativa
+from tse_importador.up.entidades.profissao_enum import *
 from datetime import datetime
 from paprika import to_string
 
@@ -24,6 +25,8 @@ class filiado_up_expectativa(filiado_up):
         self.situacao = situacao_filiacao.REGULAR
         self.local_residencia= "municipio"
         self.local_exercicio = 'Desconhecido'
+        self.etnia = 'Desconhecido'
+        self.profissao = profissao_enum.DESCONHECIDO
         pass
     pass
     def __init__(self, id):
@@ -44,6 +47,8 @@ class filiado_up_expectativa(filiado_up):
         self.situacao = situacao_filiacao.REGULAR
         self.local_residencia= "municipio"
         self.local_exercicio = 'Desconhecido'
+        self.profissao = profissao_enum.DESCONHECIDO
+        self.etnia = 'Desconhecido'
         pass
     pass
 
@@ -65,5 +70,7 @@ class filiado_up_expectativa(filiado_up):
                 self.situacao == other.situacao and
                 self.pendenciaComunicacao == other.pendenciaComunicacao and
                 self.local_residencia == other.local_residencia and
-                self.local_exercicio == other.local_exercicio
+                self.local_exercicio == other.local_exercicio and
+                self.profissao.value == other.profissao.value and 
+                self.etnia == other.etnia
                 )
