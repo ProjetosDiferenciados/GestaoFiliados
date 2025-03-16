@@ -1,3 +1,5 @@
+## [0.1.8]
+- Filiados Up possuem etnia, profissao enumerado 
 ## [0.1.7]
 - Novo layout nas paginas de upload, listagem, detalhes forms.
 ## [0.1.6]

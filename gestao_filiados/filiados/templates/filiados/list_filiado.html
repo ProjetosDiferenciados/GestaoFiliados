@@ -15,6 +15,8 @@
                     <th scope="col">Raça</th>
                     <th scope="col">Cidade</th>
                     <th scope="col">Situação</th>
+                    <th scope="col">Profissão</th>
+                    <th scope="col">Etnia</th>
                     <th scope="col">Inspecionar</th>
                 </tr>
             </thead>
@@ -27,6 +29,8 @@
                     <td>{{ filiado.raca }}</td>
                     <td>{{ filiado.local_exercicio }}</td>
                     <td>{{ filiado.situacao }}</td>
+                    <td>{{ filiado.profissao }}</td>
+                    <td>{{ filiado.etnia }}</td>
                     <td><a href="{% url 'details_filiado' filiado.id %}" class="btn btn-primary btn-sm">Visualizar</a></td>
                 </tr>
                 {% empty %}

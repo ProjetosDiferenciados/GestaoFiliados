@@ -1,6 +1,7 @@
 from tse_importador.persistencia.entidades.ent_filiado_up import ent_filiado_up
 from tse_importador.up.entidades.filiado_up import filiado_up
 from tse_importador.tse.entidades.situacao_filiacao import get_situacao_filiacao_por_nome
+from tse_importador.up.entidades.profissao_enum import get_profissao_enum_por_id
 from datetime import datetime
 import json
 
@@ -25,6 +26,7 @@ class converter_filiado_ent_up:
         ent.situacao = get_situacao_filiacao_por_nome(filiado.situacao)
         ent.dataFiliacao = filiado.dataFiliacao
         ent.data_nascimento = filiado.data_nascimento
+        ent.profissao = get_profissao_enum_por_id(filiado.profissao)
         # Fim das correcoes
         return ent
         pass
@@ -47,7 +49,8 @@ class converter_filiado_ent_up:
                     \"uf\" : \"{}\",
                     \"zona\" : {},
                     \"situacao\" : null,
-                    \"pendenciaComunicacao\" : {}
+                    \"pendenciaComunicacao\" : {},
+                    \"etnia\" : \"{}\"
                 }}""".format(
                     entidade.id,
                     entidade.nome_completo,
@@ -61,7 +64,8 @@ class converter_filiado_ent_up:
                     entidade.tituloEleitor ,
                     entidade.uf ,   
                     entidade.zona ,
-                    "true" if entidade.pendenciaComunicacao else "false"
+                    "true" if entidade.pendenciaComunicacao else "false",
+                    entidade.etnia
                 )
         pass
     
