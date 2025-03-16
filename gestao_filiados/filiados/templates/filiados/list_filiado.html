@@ -29,7 +29,7 @@
                     <td>{{ filiado.raca }}</td>
                     <td>{{ filiado.local_exercicio }}</td>
                     <td>{{ filiado.situacao }}</td>
-                    <td>{{ filiado.profissao }}</td>
+                    <td>{{ filiado.profissao.name }}</td>
                     <td>{{ filiado.etnia }}</td>
                     <td><a href="{% url 'details_filiado' filiado.id %}" class="btn btn-primary btn-sm">Visualizar</a></td>
                 </tr>
