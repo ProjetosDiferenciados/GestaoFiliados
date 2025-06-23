@@ -1,3 +1,5 @@
+## [0.1.9]
+- Documentação sobre o uso do GUNICORN para uso
 ## [0.1.8]
 - Filiados Up possuem etnia, profissao enumerado 
 ## [0.1.7]
